@@ -21,7 +21,8 @@
     return document.querySelectorAll('.p-unreads_view__show_newer') || []
   }
   function getNewMessagesButton() {
-    return elemIfNotHidden(document.querySelector('.p-unreads_view__empty button'))
+    var button = elemIfNotHidden(document.querySelector('.p-unreads_view__empty button'))
+    return button && !button.className.match(/undo/i) && button
   }
   function checkForUnreads() {
     var newMessagesButton = getNewMessagesButton()
@@ -44,6 +45,6 @@
     clickEvent.initEvent("mouseup", true, true)
     element.dispatchEvent(clickEvent)
   }
-  function elemIfNotHidden(el) { return el.offsetParent != null && el }
+  function elemIfNotHidden(el) { return el && el.offsetParent != null && el }
   checkForUnreads()
 })()
