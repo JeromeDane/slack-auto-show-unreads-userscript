@@ -8,6 +8,8 @@
 // @grant        none
 // ==/UserScript==
 
+// Source https://github.com/JeromeDane/slack-auto-show-unreads-userscript/blob/master/userscript.js
+
 (function() {
   var lastActivity = Date.now(),
       interval = 10000, // check for new unread messages every interval milliseconds
@@ -21,7 +23,7 @@
     return document.querySelectorAll('.p-unreads_view__show_newer') || []
   }
   function getNewMessagesButton() {
-    var button = elemIfNotHidden(document.querySelector('.p-unreads_view__empty button'))
+    var button = elemIfNotHidden(document.querySelector('.p-unreads_view__empty button.c-button--primary'))
     return button && !button.className.match(/undo/i) && button
   }
   function checkForUnreads() {
