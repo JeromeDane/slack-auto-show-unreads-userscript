@@ -38,7 +38,7 @@
     if(Date.now() - lastActivity > activityTimeout) {
       var refreshButton = getRefreshButton()
       if(refreshButton) simulateClick(refreshButton)
-      else document.location.reload()
+      else if(document.location.toString().match(/unreads/)) document.location.reload()
       getShowMoreLinks().forEach(simulateClick)
     }
     setTimeout(checkForUnreads, interval)
